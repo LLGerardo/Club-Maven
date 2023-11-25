@@ -69,13 +69,13 @@ public class Member {
 
     private LocalDate calculateMembershipEndDate(LocalDate startDate, String plan) {
         // Logic to calculate the membership end date based on the start date and plan
-        // This is a placeholder; you should implement your own logic
+        // TODO: his is a placeholder //need to implement more logic
         return startDate.plusMonths(12); //one-year membership
     }
     void delete() { 
         // TODO: Implement this feature
-        // This method could be used to delete a member, perhaps by marking them as inactive or removing them from a database.
-        // You might set isActiveMember to false or perform any necessary cleanup.
+        // marking them as inactive or removing them from a database?
+        // set isActiveMember to false or perform any necessary cleanup
         isActiveMember = false;
     }
 
@@ -99,7 +99,7 @@ public class Member {
         // return visitCountdown <= 0;
         // where visitCountdown is a member variable that you would decrement over time.
         // Make sure to initialize it appropriately when a member is created.
-        return false; // Placeholder, replace with actual implementation
+        return false; // TODO: Placeholder, replace with actual implementation
     }
 
     int visitStreak() {
