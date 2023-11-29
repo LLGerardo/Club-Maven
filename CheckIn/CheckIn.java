@@ -28,8 +28,9 @@ public class CheckIn {
     }
 
 // method to check membership validity
-    private static boolean checkValidity(String ){
+    private static boolean checkValidity(String memberID){
         // puneeth can you figure out logic pls -ced
+        return false;//set to false just so we can build and run (laura)
     }
 
 // method to send user to membership portal
