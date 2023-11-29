@@ -22,7 +22,7 @@ public class CheckIn {
 
             toPortal();
         } else {
-            System.out.println("Check-in failed, invalid membership.")
+            System.out.println("Check-in failed, invalid membership.");
         }
         scanner.close();
     }
@@ -36,6 +36,6 @@ public class CheckIn {
 // method to send user to membership portal
     private static void toPortal() {
         // same with this -ced
-        System.out.println("Redirecting to membership portal.")
+        System.out.println("Redirecting to membership portal.");
     }
 }
