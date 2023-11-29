@@ -3,7 +3,10 @@ package cbgui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,9 +22,9 @@ import javax.swing.JTextArea;
 
 public class GUIPanel {
 	//GUI width
-	private static final int WIDTH = 600;
+	private static final int WIDTH = 500;
 	//GUI height
-	private static final int HEIGHT = 750;
+	private static final int HEIGHT = 600;
 	//Creating a new font object
 	private static final Font ARIAL = new Font("Arial", Font.BOLD, 14);
 	//Label for the Last name
@@ -37,7 +40,7 @@ public class GUIPanel {
 	//creating a list of strings to be placed into the Gender ComboBox, the ComboBox itself will
 	//instantiatied in the creation of the GUI
 	private static final String [] GEN_LIST = {"Female", "Male", "Other"};
-	//the JComboBox for the Gender Choice
+	//the JComboBox for the Gender Choice. These are JCF members that take 
 	private static final JComboBox<String> GENDER_CHOICE = new JComboBox<String>(GEN_LIST);
 	//Label for the customer's date of birth
 	private static final JLabel DATE_OF_BIRTH = new JLabel("Customer's Date of Birth: ");
@@ -63,6 +66,10 @@ public class GUIPanel {
 	private static final JLabel NOTES_LABEL = new JLabel("Additional Notes on Customers: ");
 	//text area for notes
 	private static final JTextArea NOTES = new JTextArea("Notes");
+	//JButton for Create New Customer
+	private static final JButton CREATE = new JButton("Create New Customer");
+	//JButton for Reset
+	private static final JButton RESET = new JButton("Reset");
 			
 	//pull down menu for customer Gender 
 	
@@ -72,6 +79,8 @@ public class GUIPanel {
  *JFrame and panel objects in order to implement the GUI.
  *The instance of the panel, which sets the outlay of the labels and text areas
 * @PARAM: None*/
+	
+	
 	
 	public static void createGUI() {
 		
@@ -86,7 +95,7 @@ public class GUIPanel {
 		//JPanel Object
 		JPanel panel_one = new JPanel();
 		//Setting the panel layout, seven rows, two columns
-		panel_one.setLayout(new GridLayout(12,2,6,6));
+		panel_one.setLayout(new GridLayout(13,2,6,6));
 		
 		//Setting the BackGround Color
 		panel_one.setBackground(Color.CYAN);
@@ -129,55 +138,62 @@ public class GUIPanel {
 		panel_one.add(ENTER_DOB);
 		//adding label for membership length
 		panel_one.add(MEM_LENGTH);
+		//setting font
 		MEM_LENGTH.setFont(ARIAL);
+		//setting color
 		MEM_LENGTH.setForeground(Color.BLUE);
-		//
+		//adding label
 		panel_one.add(PAYMENT_TYPE);
+		//adding font
 		PAYMENT_TYPE.setFont(ARIAL);
+		//adding color
 		PAYMENT_TYPE.setForeground(Color.BLUE);
 		//adding to the panel
 		panel_one.add(MEM_LENS);
-		//adding payment pulldown
+		//adding payment pull down
 		panel_one.add(PAYMENT_PULLDOWN);
+		//adding the payment
 		panel_one.add(START_DATE);
-		//creating a new panel for the start date, and setting it to the correct color
-		//JPanel panel_two = new JPanel();
-		//two rows for label and input, this panel will be placed below the first panel
-		//panel_two.setLayout(new GridLayout(2,1,6,6));
-		//setting the color
-		//panel_two.setBackground(Color.CYAN);
-		//adding label
-		//panel_one.add(START_DATE);
-		//;
+		//adding font
 		START_DATE.setFont(ARIAL);
+		//adding color
 		START_DATE.setForeground(Color.BLUE);
+		//adding payment type
 		PAYMENT_TYPE.setForeground(Color.BLUE);
+		//adding notes label
 		panel_one.add(NOTES_LABEL);
+		//adding font
 		NOTES_LABEL.setFont(ARIAL);
+		//adding color
 		NOTES_LABEL.setForeground(Color.BLUE);
-		panel_one.setFont(ARIAL);
-		panel_one.setForeground(Color.BLUE);
-		
 		//adding text area
 		panel_one.add(ENTER_START);
+		//adding text area
 		panel_one.add(NOTES);
+		//adding button
+		panel_one.add(CREATE);
+		//adding button for reset
+		panel_one.add(RESET);
+		//adding the action listeners. When looking at the 
+		CREATE.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+				String lastname = CUST_LASTNAME.getText();
+				String firstname = CUST_FIRSTNAME.getText();
+				System.out.println(lastname);
+				System.out.println(firstname);
+				
+				
+			
+		}
+				
+	});
 		
-		//panel three for the original
-		//JPanel panel_three = new JPanel();
-		//panel_three.setLayout(new GridLayout(2,1,6,6));
-		//panel_three.setBackground(Color.CYAN);
-		//adding label
-	//	panel_three.add(NOTES_LABEL);
-		//NOTES_LABEL.setFont(ARIAL);
-		//NOTES_LABEL.setForeground(Color.BLUE);
-		//panel_three.add(NOTES);
-
-		//This is the larger panel that will hold all others... Organized in descending order...
+		//This the larger panel into which our panel will be nested
 		JPanel big_panel = new JPanel();
 		big_panel.setBackground(Color.CYAN);
 		big_panel.add(panel_one);
-		//big_panel.add(panel_two);
-		//big_panel.add(panel_three);
+		
 		
 		
 		
