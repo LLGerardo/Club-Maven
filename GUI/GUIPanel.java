@@ -28,7 +28,7 @@ public class GUIPanel {
 	//Creating a new font object
 	private static final Font ARIAL = new Font("Arial", Font.BOLD, 14);
 	//Label for the Last name
-	private static final JLabel LASTNAME = new JLabel("Enter New Customer Name: ");
+	private static final JLabel LASTNAME = new JLabel("Enter New Customer Last Name: ");
 	//Text area for the customer's last name, where the staff member will input
 	private static final JTextArea CUST_LASTNAME = new JTextArea();
 	//Label for for the customer's first name
