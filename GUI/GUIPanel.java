@@ -29,11 +29,11 @@ public class GUIPanel {
 	//Label for the Last name
 	private static final JLabel LASTNAME = new JLabel("Enter New Customer Last Name: ");
 	//Text area for the customer's last name, where the staff member will input
-	private static final JTextArea CUST_LASTNAME = new JTextArea(1,1);
+	private static final JTextArea CUST_LASTNAME = new JTextArea();
 	//Label for for the customer's first name
 	private static final JLabel FIRSTNAME = new JLabel("Enter New Customer First Name: ");
 	//Text for the first name
-	private static final JTextArea CUST_FIRSTNAME = new JTextArea(1,1);
+	private static final JTextArea CUST_FIRSTNAME = new JTextArea();
 	//Label for the gender
 	private static final JLabel GENDER = new JLabel("Enter New Custumer Gender: ");
 	//creating a list of strings to be placed into the Gender ComboBox, the ComboBox itself will
@@ -44,7 +44,7 @@ public class GUIPanel {
 	//Label for the customer's date of birth
 	private static final JLabel DATE_OF_BIRTH = new JLabel("Customer's Date of Birth: ");
 	//text field for date of birth
-	private static final JTextArea ENTER_DOB = new JTextArea("mm/dd/yyyy",1,1);
+	private static final JTextArea ENTER_DOB = new JTextArea("mm/dd/yyyy");
 	//label for the for the membership length
 	private static final JLabel MEM_LENGTH = new JLabel("Enter Memberhsip Length: ");
 	//creating the string array for the gym memberships
@@ -60,7 +60,7 @@ public class GUIPanel {
 	//Label for phone number
 	private static final JLabel PHONE_NUMB = new JLabel("Customer Phone Number: ");
 	//text area for Phone
-	private static final JTextArea ENTER_PHONE = new JTextArea("###-###-####",1,1);
+	private static final JTextArea ENTER_PHONE = new JTextArea("###-###-####");
 	//Label for email
 	private static final JLabel CUS_EMAIL = new JLabel("Customer Email: ");
 	//text are for email
@@ -68,7 +68,7 @@ public class GUIPanel {
 	//Label for address 
 	private static final JLabel ADDRESS_LABEL = new JLabel("Customer Address: ");
 	//Text Area for address 
-	private static final JTextArea ENTER_ADD = new JTextArea(2,1);
+	private static final JTextArea ENTER_ADD = new JTextArea();
 	//Label for preferred customer contact
 	private static final JLabel PREF_CONTACT = new JLabel("Preferred Customer Contact");
 	//String array for contact choices
@@ -78,7 +78,7 @@ public class GUIPanel {
 	//membership start date Label
 	private static final JLabel START_DATE = new JLabel("Membership Start Date: ");
 	//membership start date text
-	private static final JTextArea ENTER_START = new JTextArea("mm/dd/yyyy",1,1);
+	private static final JTextArea ENTER_START = new JTextArea("mm/dd/yyyy");
 	//Label for additional notes
 	private static final JLabel NOTES_LABEL = new JLabel("Additional Notes on Customers: ");
 	//text area for notes
