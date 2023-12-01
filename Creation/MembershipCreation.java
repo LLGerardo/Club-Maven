@@ -7,6 +7,8 @@ import java.time.format.DateTimeFormatter;
 //Adam
 //Laura
 
+//TODO: handle each input from james GUI
+//TODO: making a member of the GUI
 public class MembershipCreation {
     public void createMember() { //create new member process
         Scanner scan = new Scanner(System.in); //use scanner to read input
