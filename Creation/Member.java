@@ -13,6 +13,7 @@ public class Member {
     private String phone;
     private String email;
     private int age;
+    private int visitCounter;
     private String preferredContactMethod;
     private LocalDate creationDate;
     private boolean isActiveMember;
@@ -99,6 +100,11 @@ public class Member {
         // return visitCountdown <= 0;
         // where visitCountdown is a member variable that you would decrement over time.
         // Make sure to initialize it appropriately when a member is created.
+        int visitCounter= this.visitCounter;
+        if (visitCounter<=0){
+
+        }
+        
         return false; // TODO: Placeholder, replace with actual implementation
     }
 
