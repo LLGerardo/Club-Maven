@@ -98,7 +98,7 @@ public class GUIPanel {
 		panel_one.setLayout(new GridLayout(13,2,6,6));
 		
 		//Setting the BackGround Color
-		panel_one.setBackground(Color.CYAN);
+		panel_one.setBackground(Color.GRAY);
 		
 		//adding constants to the panel
 		//adding the last name label to panel
@@ -180,18 +180,50 @@ public class GUIPanel {
 				public void actionPerformed(ActionEvent e) {
 				String lastname = CUST_LASTNAME.getText();
 				String firstname = CUST_FIRSTNAME.getText();
+				String gen = (String) GENDER_CHOICE.getSelectedItem();
+				String dob = ENTER_DOB.getText();
+				String payment = (String) PAYMENT_PULLDOWN.getSelectedItem();
+				String memb_length = (String) MEM_LENS.getSelectedItem();
+				String start_date = ENTER_START.getSelectedText();
+				String customer_notes = NOTES.getText();
+
+
 				System.out.println(lastname);
 				System.out.println(firstname);
-				
+				System.out.println(gen);
+				System.out.println(dob);
+				System.out.println(payment);
+				System.out.println(memb_length);
+				System.out.println(start_date);
+				System.out.println(customer_notes);
 				
 			
 		}
 				
 	});
+
+	RESET.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			CUST_LASTNAME.setText(null);
+			CUST_FIRSTNAME.setText(null);
+			GENDER_CHOICE.setSelectedItem(null);
+
+			ENTER_DOB.setText(null);
+			PAYMENT_PULLDOWN.setSelectedItem(null);
+			MEM_LENS.setSelectedItem(null);
+			ENTER_START.setText(null);
+			NOTES.setText(null);
+			throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+		}
+		
+		
+	});
 		
 		//This the larger panel into which our panel will be nested
 		JPanel big_panel = new JPanel();
-		big_panel.setBackground(Color.CYAN);
+		big_panel.setBackground(Color.GRAY);
 		big_panel.add(panel_one);
 		
 		
