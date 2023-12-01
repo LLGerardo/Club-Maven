@@ -3,7 +3,6 @@ import java.util.Scanner;
 //Ceddy
 //
 public class CheckIn {
-    
 //Start with scanner input from user
 //If time permits we’ll advance to a barcode
 //Increment counters
@@ -39,7 +38,7 @@ public class CheckIn {
                 return true;
             }
         }
-        return false;//set to false just so we can build and run (laura)
+        return false;//set to false just so we can build and run (laura) //TODO:finish this
         //ok i tried just now -ced
     }
 
