@@ -45,7 +45,7 @@ public class MembershipCreation {
         String membershipPlan = scan.nextLine();
         LocalDate membershipEndDate = calculateMembershipEndDate(creationDate, membershipPlan); // calculate end date accoridng to chosen membership plan (6 months, 1 year, or 3 year)
         boolean isActiveMember = true;
-        Member member = new Member(firstName,lastName, username, dateOfBirth,
+        Member member = new Member(firstName,lastName,dateOfBirth,
         address, phone, email, preferredContactMethod,
         creationDate, isActiveMember, membershipPlan);//create member object
         int membershipId = member.getMembershipId();//membership ID generation

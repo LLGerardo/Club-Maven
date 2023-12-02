@@ -1,4 +1,8 @@
 package GUI;
+import Creation.Member;
+import Creation.MembershipCreation;
+import java.time.LocalDate;
+import java.time.Period;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -70,9 +74,7 @@ public class GUIPanel {
 	private static final JButton CREATE = new JButton("Create New Customer");
 	//JButton for Reset
 	private static final JButton RESET = new JButton("Reset");
-			
 	//pull down menu for customer Gender 
-	
 	
 	
 /*METHOD: creates a GUI panel for user input. The method requires the instantiation of 
@@ -186,7 +188,14 @@ public class GUIPanel {
 				String memb_length = (String) MEM_LENS.getSelectedItem();
 				String start_date = ENTER_START.getSelectedText();
 				String customer_notes = NOTES.getText();
-
+				String address = ADD.getText(); //TODO add this to GUI
+				int phone = PHONE.getText(); //TODO add this to GUI
+				String email = EMAIL.getText(); //TODO add this to GUI
+				String prefcontact = PREF.getSelectedItem(); //TODO add this to GUI
+				LocalDate creationDate = LocalDate.now();/ /creation date
+				String membershipPlan = MEM_LENS.getSelectedItem(); 
+			
+				Member member = new Member(firstname, lastname, dob,address,phone,email,prefcontact,creationDate, true, membershipPlan);
 
 				System.out.println(lastname);
 				System.out.println(firstname);
