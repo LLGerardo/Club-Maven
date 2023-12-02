@@ -9,7 +9,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -26,9 +25,9 @@ import javax.swing.JTextArea;
 
 public class GUIPanel {
 	//GUI width
-	private static final int WIDTH = 500;
+	private static final int WIDTH = 600;
 	//GUI height
-	private static final int HEIGHT = 600;
+	private static final int HEIGHT = 750;
 	//Creating a new font object
 	private static final Font ARIAL = new Font("Arial", Font.BOLD, 14);
 	//Label for the Last name
@@ -62,6 +61,24 @@ public class GUIPanel {
 	private static final String [] PAYMENT_METHODS = {"Credit Card", "Debit", "Payment App", "Cash"};
 	//creating the pulldown menu for the credit card payments
 	private static final JComboBox<String> PAYMENT_PULLDOWN = new JComboBox<String>(PAYMENT_METHODS);
+	//Label for phone number
+	private static final JLabel PHONE_NUMB = new JLabel("Customer Phone Number: ");
+	//text area for Phone
+	private static final JTextArea ENTER_PHONE = new JTextArea("###-###-####");
+	//Label for email
+	private static final JLabel CUS_EMAIL = new JLabel("Customer Email: ");
+	//text are for email
+	private static final JTextArea ENTER_EMAIL = new JTextArea(1,1);
+	//Label for address 
+	private static final JLabel ADDRESS_LABEL = new JLabel("Customer Address: ");
+	//Text Area for address 
+	private static final JTextArea ENTER_ADD = new JTextArea();
+	//Label for preferred customer contact
+	private static final JLabel PREF_CONTACT = new JLabel("Preferred Customer Contact");
+	//String array for contact choices
+	private static final String [] CONTACT_LIST = {"Phone Call", "SMS", "Email"};
+	//the pulldown for the preffered contact
+	private static final JComboBox<String> CONTACT_PULL = new JComboBox<String>(CONTACT_LIST);
 	//membership start date Label
 	private static final JLabel START_DATE = new JLabel("Membership Start Date: ");
 	//membership start date text
@@ -69,7 +86,7 @@ public class GUIPanel {
 	//Label for additional notes
 	private static final JLabel NOTES_LABEL = new JLabel("Additional Notes on Customers: ");
 	//text area for notes
-	private static final JTextArea NOTES = new JTextArea("Notes");
+	private static final JTextArea NOTES = new JTextArea("Notes",2,1);
 	//JButton for Create New Customer
 	private static final JButton CREATE = new JButton("Create New Customer");
 	//JButton for Reset
@@ -87,7 +104,7 @@ public class GUIPanel {
 	public static void createGUI() {
 		
 		
-		JFrame frame = new JFrame();
+		JFrame frame = new JFrame("Club Maven GUI");
 		//setting the size of JFrame
 		frame.setSize(WIDTH,HEIGHT);
 		//sets the default to close
@@ -97,7 +114,7 @@ public class GUIPanel {
 		//JPanel Object
 		JPanel panel_one = new JPanel();
 		//Setting the panel layout, seven rows, two columns
-		panel_one.setLayout(new GridLayout(13,2,6,6));
+		panel_one.setLayout(new GridLayout(19,2,6,6));
 		
 		//Setting the BackGround Color
 		panel_one.setBackground(Color.GRAY);
@@ -134,6 +151,8 @@ public class GUIPanel {
 		DATE_OF_BIRTH.setForeground(Color.BLUE);
 		panel_one.add(DATE_OF_BIRTH);
 		
+		
+		
 		//adding the pull down to the panel
 		panel_one.add(GENDER_CHOICE);
 		//adding the DOB Text Area
@@ -162,15 +181,53 @@ public class GUIPanel {
 		START_DATE.setForeground(Color.BLUE);
 		//adding payment type
 		PAYMENT_TYPE.setForeground(Color.BLUE);
-		//adding notes label
-		panel_one.add(NOTES_LABEL);
-		//adding font
+		//phone number label
+		panel_one.add(PHONE_NUMB);
+		//setting text
+		PHONE_NUMB.setFont(ARIAL);
+		//setting color
+		PHONE_NUMB.setForeground(Color.BLUE);
+		//adding email label
+		//setting font
+		
 		NOTES_LABEL.setFont(ARIAL);
 		//adding color
 		NOTES_LABEL.setForeground(Color.BLUE);
 		//adding text area
 		panel_one.add(ENTER_START);
-		//adding text area
+		//adding text area for phone
+		panel_one.add(ENTER_PHONE);
+		//adding email label
+		panel_one.add(CUS_EMAIL);
+		//setting Text
+		CUS_EMAIL.setFont(ARIAL);
+		//setting color
+		CUS_EMAIL.setForeground(Color.BLUE);
+		//adding label for 
+		panel_one.add(PREF_CONTACT);
+		//setting the font
+		PREF_CONTACT.setFont(ARIAL);
+		//setting the color
+		PREF_CONTACT.setForeground(Color.BLUE);
+		//adding text area for Phone
+		panel_one.add(ENTER_EMAIL);
+		//adding the pulldown
+		panel_one.add(CONTACT_PULL);
+		//adding the ADDRESS LABEL
+		panel_one.add(ADDRESS_LABEL);
+		//set font
+		ADDRESS_LABEL.setFont(ARIAL);
+		//setting color
+		ADDRESS_LABEL.setForeground(Color.BLUE);
+		//adding notes label
+		panel_one.add(NOTES_LABEL);
+		//adding font
+		NOTES_LABEL.setFont(ARIAL);
+		//set color
+		NOTES_LABEL.setForeground(Color.BLUE);
+		//adding text area for address
+		panel_one.add(ENTER_ADD);
+		//adding text area for notes
 		panel_one.add(NOTES);
 		//adding button
 		panel_one.add(CREATE);

@@ -1,4 +1,8 @@
 package Cancellation;
+//import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 //Arub
 public class Membercancellation {
     public void cancelMembership(Memeber member){
@@ -6,7 +10,7 @@ public class Membercancellation {
             member.setActiveMember(false);
             System.out.println("the membership with this ID:" +  member.getMembershipId() + "had been canceled");
         }else{
-            System.out.println("this member with this ID:" +  member.getMembershipId() + "is already canceled");
+            System.out.println("the membership with this ID:" +  member.getMembershipId() + "is already canceled");
         }
     }
 }
