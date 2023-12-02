@@ -240,19 +240,20 @@ public class GUIPanel {
 				String lastname = CUST_LASTNAME.getText();
 				String firstname = CUST_FIRSTNAME.getText();
 				String gen = (String) GENDER_CHOICE.getSelectedItem();
-				String dob = ENTER_DOB.getText();
+				LocalDate dob = ENTER_DOB.getText(); //can you alter your input to make it LocalDate? My age verification kind of counts on that
 				String payment = (String) PAYMENT_PULLDOWN.getSelectedItem();
 				String memb_length = (String) MEM_LENS.getSelectedItem();
 				String start_date = ENTER_START.getSelectedText();
 				String customer_notes = NOTES.getText();
-				String address = ADD.getText(); //TODO add this to GUI
-				int phone = PHONE.getText(); //TODO add this to GUI
-				String email = EMAIL.getText(); //TODO add this to GUI
-				String prefcontact = PREF.getSelectedItem(); //TODO add this to GUI
-				LocalDate creationDate = LocalDate.now();/ /creation date
-				String membershipPlan = MEM_LENS.getSelectedItem(); 
+				String address = ENTER_ADD.getText(); 
+				String phone = ENTER_PHONE.getText(); 
+				String email = ENTER_EMAIL.getText(); 
+				String prefcontact = (String)CONTACT_PULL.getSelectedItem(); 
+				LocalDate creationDate = LocalDate.now(); 
+				String membershipPlan = (String)MEM_LENS.getSelectedItem(); 
+				Boolean isActive = true;
 			
-				Member member = new Member(firstname, lastname, dob,address,phone,email,prefcontact,creationDate, true, membershipPlan);
+				Member member = new Member(firstname, lastname, dob,address,phone,email,prefcontact,creationDate, isActive, membershipPlan);
 
 				System.out.println(lastname);
 				System.out.println(firstname);

@@ -1,5 +1,6 @@
 package CheckIn;
 import java.util.Scanner;
+import GUI.DatabaseConnector; // added this to utilize the database i think (laura)
 //Ceddy
 //
 public class CheckIn {
@@ -10,7 +11,7 @@ public class CheckIn {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Scan barcode/Enter membership ID");
+        System.out.println("Scan barcode/Enter membership ID:");
         String input = scanner.nextLine();
 
     // check the validity of the membership
@@ -34,12 +35,13 @@ public class CheckIn {
         //i'll need to take a look at the database to do this i think -ced
         String[] validIDs = //valid ids;
         for (String ID : validIDs) {
-            if (ID.equals(memberID) {
+            if (ID.equals(memberID)) {
                 return true;
             }
         }
         return false;//set to false just so we can build and run (laura) //TODO:finish this
         //ok i tried just now -ced
+        //looks good maybe talk to tofumni about how to connect the database to this (laura)
     }
 
 // method to send user to membership portal

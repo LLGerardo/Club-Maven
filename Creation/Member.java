@@ -1,4 +1,4 @@
-package Creation; // i have no clue what creation does but it yells at me if its not here. If you understand please explain
+package Creation; 
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -21,12 +21,12 @@ public class Member {
     private LocalDate membershipEndDate;
     private int membershipId;
 
-    public Member(String firstName, String lastName, String username, LocalDate dateOfBirth,
+    public Member(String firstName, String lastName, LocalDate dateOfBirth,
                   String address, String phone, String email, String preferredContactMethod,
                   LocalDate creationDate, boolean isActiveMember, String membershipPlan) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.username = username;
+        this.username = firstName+lastName;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.phone = phone;
@@ -117,6 +117,8 @@ public class Member {
         // where visitStreak is a member variable that you would update based on the member's visits.
         return 0; // Placeholder, replace with actual implementation
     }
+
+    
 
     @Override
     public String toString() {
