@@ -106,6 +106,10 @@ public class Member {
     boolean active() {
         // TODO: Implement this feature
         // This method checks if the membership is currently active.
+        LocalDate currentDate = LocalDate.now();
+        if(visitCountdown() && membershipEndDate != currentDate){
+            isActiveMember = false;
+        }
         return isActiveMember;
     }
 
