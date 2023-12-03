@@ -14,6 +14,7 @@ public class Member {
     private String email;
     private int age;
     private int visitCounter;
+    private int visitCountdown;
     private String preferredContactMethod;
     private LocalDate creationDate;
     private boolean isActiveMember;
@@ -38,6 +39,9 @@ public class Member {
         this.age = calculateAge(dateOfBirth);
         this.membershipEndDate = calculateMembershipEndDate(creationDate, membershipPlan);
         this.membershipId = nextMembershipId++;
+        this.visitCountdown = 30; // Initialize visit countdown (adjust the initial value as needed)
+        this.visitCounter = 0;
+
     }
 
     // Getter methods for attributes
@@ -68,10 +72,23 @@ public class Member {
         return Period.between(dateOfBirth, currentDate).getYears();
     }
 
-    private LocalDate calculateMembershipEndDate(LocalDate startDate, String plan) {
-        // Logic to calculate the membership end date based on the start date and plan
-        // TODO: his is a placeholder //need to implement more logic
-        return startDate.plusMonths(12); //one-year membership
+    private LocalDate calculateMembershipEndDate(LocalDate startDate, String plan) { // just imported from memebercreation
+        switch (plan.toLowerCase().trim()) {
+            case "6 months":
+                return startDate.plusMonths(6);
+            case "6":
+                return startDate.plusMonths(6);
+            case "1 year":
+                return startDate.plusYears(1);
+            case "1":
+                return startDate.plusYears(1);
+            case "3 years":
+                return startDate.plusYears(3);
+            case "3":
+                return startDate.plusYears(3);
+            default:
+                throw new IllegalArgumentException("Invalid membership plan: " + plan);
+        }
     }
     void delete() { 
         // TODO: Implement this feature
@@ -101,11 +118,10 @@ public class Member {
         // where visitCountdown is a member variable that you would decrement over time.
         // Make sure to initialize it appropriately when a member is created.
         int visitCounter= this.visitCounter;
-        if (visitCounter<=0){
-
+        if (visitCounter<=0) {
+            visitCountdown--;
         }
-        
-        return false; // TODO: Placeholder, replace with actual implementation
+        return visitCountdown <= 0; // TODO: Placeholder, replace with actual implementation
     }
 
     int visitStreak() {
@@ -115,7 +131,14 @@ public class Member {
         // For example:
         // return visitStreak;
         // where visitStreak is a member variable that you would update based on the member's visits.
-        return 0; // Placeholder, replace with actual implementation
+
+        return visitCounter; // Placeholder, replace with actual implementation
+    }
+
+    void recordVisit()  { //should be used in checkin 
+        visitCounter++;
+
+        visitCountdown = 30;
     }
 
     
