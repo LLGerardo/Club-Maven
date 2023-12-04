@@ -74,6 +74,9 @@ public class Member {
 
     private LocalDate calculateMembershipEndDate(LocalDate startDate, String plan) { // just imported from memebercreation
         switch (plan.toLowerCase().trim()) {
+            case "3 months":
+                return startDate.plusMonths(3);
+                case "0":
             case "6 months":
                 return startDate.plusMonths(6);
             case "6":

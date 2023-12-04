@@ -3,7 +3,8 @@ import Creation.Member;
 import Creation.MembershipCreation;
 import java.time.LocalDate;
 import java.time.Period;
-
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -48,7 +49,7 @@ public class GUIPanel {
 	//Label for the customer's date of birth
 	private static final JLabel DATE_OF_BIRTH = new JLabel("Customer's Date of Birth: ");
 	//text field for date of birth
-	private static final JTextArea ENTER_DOB = new JTextArea("mm/dd/yyyy");
+	private static final JTextArea ENTER_DOB = new JTextArea("mm-dd-yyyy");
 	//label for the for the membership length
 	private static final JLabel MEM_LENGTH = new JLabel("Enter Memberhsip Length: ");
 	//creating the string array for the gym memberships
@@ -82,7 +83,7 @@ public class GUIPanel {
 	//membership start date Label
 	private static final JLabel START_DATE = new JLabel("Membership Start Date: ");
 	//membership start date text
-	private static final JTextArea ENTER_START = new JTextArea("mm/dd/yyyy");
+	private static final JTextArea ENTER_START = new JTextArea("mm-dd-yyyy");
 	//Label for additional notes
 	private static final JLabel NOTES_LABEL = new JLabel("Additional Notes on Customers: ");
 	//text area for notes
@@ -92,6 +93,10 @@ public class GUIPanel {
 	//JButton for Reset
 	private static final JButton RESET = new JButton("Reset");
 	//pull down menu for customer Gender 
+	
+		
+
+	//("MM-dd-yyyy");
 	
 	
 /*METHOD: creates a GUI panel for user input. The method requires the instantiation of 
@@ -103,6 +108,10 @@ public class GUIPanel {
 	
 	public static void createGUI() {
 		
+		DateTimeFormatterBuilder df = new DateTimeFormatterBuilder();
+		df.appendPattern("MM-dd-yyyy");
+		//df.appendLiteral(' ');
+		DateTimeFormatter form = df.toFormatter();
 		
 		JFrame frame = new JFrame("Club Maven GUI");
 		//setting the size of JFrame
@@ -240,7 +249,8 @@ public class GUIPanel {
 				String lastname = CUST_LASTNAME.getText();
 				String firstname = CUST_FIRSTNAME.getText();
 				String gen = (String) GENDER_CHOICE.getSelectedItem();
-				LocalDate dob = ENTER_DOB.getText(); //can you alter your input to make it LocalDate? My age verification kind of counts on that
+				String date_of_birth = ENTER_DOB.getText();
+				LocalDate dob = LocalDate.parse(date_of_birth, form); //can you alter your input to make it LocalDate? My age verification kind of counts on that
 				String payment = (String) PAYMENT_PULLDOWN.getSelectedItem();
 				String memb_length = (String) MEM_LENS.getSelectedItem();
 				String start_date = ENTER_START.getSelectedText();
@@ -254,15 +264,17 @@ public class GUIPanel {
 				Boolean isActive = true;
 			
 				Member member = new Member(firstname, lastname, dob,address,phone,email,prefcontact,creationDate, isActive, membershipPlan);
-
-				System.out.println(lastname);
-				System.out.println(firstname);
-				System.out.println(gen);
-				System.out.println(dob);
-				System.out.println(payment);
-				System.out.println(memb_length);
-				System.out.println(start_date);
-				System.out.println(customer_notes);
+				System.out.print(member.toString());
+				System.out.print(dob);
+				
+				//System.out.println(lastname);
+				//System.out.println(firstname);
+				//System.out.println(gen);
+				//System.out.println(dob);
+				//System.out.println(payment);
+				//System.out.println(memb_length);
+				//System.out.println(start_date);
+				//System.out.println(customer_notes);
 				
 			
 		}
