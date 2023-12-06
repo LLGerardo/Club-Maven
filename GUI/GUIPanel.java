@@ -53,7 +53,7 @@ public class GUIPanel {
 	//label for the for the membership length
 	private static final JLabel MEM_LENGTH = new JLabel("Enter Memberhsip Length: ");
 	//creating the string array for the gym memberships
-	private static final String [] MEMBER_LENGTH = {"3 months", "6 months", "12 months", "24 months"};
+	private static final String [] MEMBER_LENGTH = {"3 months", "6 months", "12 months", "24 months", "36 months"};
 	//the pulldown menu for membership lengths
 	private static final JComboBox<String> MEM_LENS = new JComboBox<String>(MEMBER_LENGTH);
 	//Label for the payment type
@@ -107,7 +107,7 @@ public class GUIPanel {
 	
 	
 	public static void createGUI() {
-		
+		//This is the date time format
 		DateTimeFormatterBuilder df = new DateTimeFormatterBuilder();
 		df.appendPattern("MM-dd-yyyy");
 		//df.appendLiteral(' ');

@@ -76,7 +76,7 @@ public class Member {
         switch (plan.toLowerCase().trim()) {
             case "3 months":
                 return startDate.plusMonths(3);
-                case "0":
+                
             case "6 months":
                 return startDate.plusMonths(6);
             case "6":
@@ -85,6 +85,8 @@ public class Member {
                 return startDate.plusYears(1);
             case "1":
                 return startDate.plusYears(1);
+            case "24 months":
+                return startDate.plusYears(2);
             case "3 years":
                 return startDate.plusYears(3);
             case "3":
