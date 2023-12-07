@@ -108,10 +108,11 @@ public class GUIPanel {
 	
 	public static void createGUI() {
 		//This is the date time format
-		DateTimeFormatterBuilder df = new DateTimeFormatterBuilder();
-		df.appendPattern("MM-dd-yyyy");
+		//DateTimeFormatterBuilder df = new DateTimeFormatterBuilder();
+		//df.appendPattern("MM-dd-yyyy");
 		//df.appendLiteral(' ');
-		DateTimeFormatter form = df.toFormatter();
+		//DateTimeFormatter form = df.toFormatter();
+		DateTimeFormatter form = DateTimeFormatter.ofPattern("MM-dd-yyyy");
 		
 		JFrame frame = new JFrame("Club Maven GUI");
 		//setting the size of JFrame
