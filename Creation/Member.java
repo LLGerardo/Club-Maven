@@ -126,7 +126,7 @@ public class Member {
         // where visitCountdown is a member variable that you would decrement over time.
         // Make sure to initialize it appropriately when a member is created.
         int visitCounter= this.visitCounter;
-        if (visitCounter<=0) {
+        if (visitCounter>0) {
             visitCountdown--;
         }
         return visitCountdown <= 0; // TODO: Placeholder, replace with actual implementation
