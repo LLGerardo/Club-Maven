@@ -184,11 +184,11 @@ public class GUIPanel {
 		//adding payment pull down
 		panel_one.add(PAYMENT_PULLDOWN);
 		//adding the payment
-		panel_one.add(START_DATE);
+		//panel_one.add(START_DATE);
 		//adding font
-		START_DATE.setFont(ARIAL);
+		//START_DATE.setFont(ARIAL);
 		//adding color
-		START_DATE.setForeground(Color.BLUE);
+		//START_DATE.setForeground(Color.BLUE);
 		//adding payment type
 		PAYMENT_TYPE.setForeground(Color.BLUE);
 		//phone number label
@@ -197,48 +197,56 @@ public class GUIPanel {
 		PHONE_NUMB.setFont(ARIAL);
 		//setting color
 		PHONE_NUMB.setForeground(Color.BLUE);
-		//adding email label
-		//setting font
-		
-		NOTES_LABEL.setFont(ARIAL);
-		//adding color
-		NOTES_LABEL.setForeground(Color.BLUE);
-		//adding text area
-		panel_one.add(ENTER_START);
-		//adding text area for phone
-		panel_one.add(ENTER_PHONE);
-		//adding email label
 		panel_one.add(CUS_EMAIL);
 		//setting Text
 		CUS_EMAIL.setFont(ARIAL);
 		//setting color
 		CUS_EMAIL.setForeground(Color.BLUE);
+		//phone text box
+		panel_one.add(ENTER_PHONE);
+		//adding the email text box
+		panel_one.add(ENTER_EMAIL);
+		//adding email label
+		
+		
+		
+		
+		
+		NOTES_LABEL.setFont(ARIAL);
+		//adding color
+		NOTES_LABEL.setForeground(Color.BLUE);
+
+
+		
+		//panel_one.add(ENTER_START);
+		//adding text area for phone
+		
+		
+		
 		//adding label for 
 		panel_one.add(PREF_CONTACT);
 		//setting the font
 		PREF_CONTACT.setFont(ARIAL);
 		//setting the color
 		PREF_CONTACT.setForeground(Color.BLUE);
-		//adding text area for Phone
-		panel_one.add(ENTER_EMAIL);
-		//adding the pulldown
-		panel_one.add(CONTACT_PULL);
 		//adding the ADDRESS LABEL
 		panel_one.add(ADDRESS_LABEL);
 		//set font
 		ADDRESS_LABEL.setFont(ARIAL);
 		//setting color
 		ADDRESS_LABEL.setForeground(Color.BLUE);
-		//adding notes label
-		panel_one.add(NOTES_LABEL);
-		//adding font
-		NOTES_LABEL.setFont(ARIAL);
-		//set color
-		NOTES_LABEL.setForeground(Color.BLUE);
+		//adding the pulldown menu for the contact
+		panel_one.add(CONTACT_PULL);
 		//adding text area for address
 		panel_one.add(ENTER_ADD);
+		//notes label
+		//panel_one.add(NOTES_LABEL);
+		//adding font
+		//NOTES_LABEL.setFont(ARIAL);
+		//set color
+		//NOTES_LABEL.setForeground(Color.BLUE);
 		//adding text area for notes
-		panel_one.add(NOTES);
+		//panel_one.add(NOTES);
 		//adding button
 		panel_one.add(CREATE);
 		//adding button for reset
