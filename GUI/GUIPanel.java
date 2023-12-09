@@ -25,6 +25,9 @@ import javax.swing.JTextArea;
  * and height of the GUI, the Labels, Text areas, and Buttons */
 
 public class GUIPanel {
+	private static LocalDate start = LocalDate.now();
+	private static DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	private static String start_string = start.format(form);
 	//GUI width
 	private static final int WIDTH = 600;
 	//GUI height
@@ -83,22 +86,26 @@ public class GUIPanel {
 	//membership start date Label
 	private static final JLabel START_DATE = new JLabel("Membership Start Date: ");
 	//membership start date text
-	private static final JTextArea ENTER_START = new JTextArea("yyyy-MM-dd");
+	private static final JTextArea ENTER_START = new JTextArea(start_string);
 	//Label for additional notes
-	private static final JLabel NOTES_LABEL = new JLabel("Additional Notes on Customers: ");
+	//private static final JLabel NOTES_LABEL = new JLabel("Additional Notes on Customers: ");
 	//text area for notes
 	private static final JTextArea NOTES = new JTextArea("Notes",2,1);
 	//JButton for Create New Customer
 	private static final JButton CREATE = new JButton("Create New Customer");
 	//JButton for Reset
 	private static final JButton RESET = new JButton("Reset");
-	//pull down menu for customer Gender 
+	//placeholder
+	private static final JLabel PLACE_HOLDER = new JLabel(" ");
+	//placeholder two
+	private static final JLabel PLACE_HOLDER2 = new JLabel(" ");
 	
 		
 
 	//("MM-dd-yyyy");
 //DateTimeFormatter form = df.toFormatter();
-public static DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+
 
 
 
@@ -185,12 +192,12 @@ public static DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 		panel_one.add(MEM_LENS);
 		//adding payment pull down
 		panel_one.add(PAYMENT_PULLDOWN);
-		//adding the payment
-		//panel_one.add(START_DATE);
+		
+		panel_one.add(START_DATE);
 		//adding font
-		//START_DATE.setFont(ARIAL);
+		START_DATE.setFont(ARIAL);
 		//adding color
-		//START_DATE.setForeground(Color.BLUE);
+		START_DATE.setForeground(Color.BLUE);
 		//adding payment type
 		PAYMENT_TYPE.setForeground(Color.BLUE);
 		//phone number label
@@ -199,48 +206,48 @@ public static DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 		PHONE_NUMB.setFont(ARIAL);
 		//setting color
 		PHONE_NUMB.setForeground(Color.BLUE);
+		//entering the start date
+		panel_one.add(ENTER_START);
+		//phone text box
+		panel_one.add(ENTER_PHONE);
+		//email label
 		panel_one.add(CUS_EMAIL);
 		//setting Text
 		CUS_EMAIL.setFont(ARIAL);
 		//setting color
 		CUS_EMAIL.setForeground(Color.BLUE);
-		//phone text box
-		panel_one.add(ENTER_PHONE);
 		//adding the email text box
-		panel_one.add(ENTER_EMAIL);
-		//adding email label
-		
-		
-		
-		
-		
-		NOTES_LABEL.setFont(ARIAL);
-		//adding color
-		NOTES_LABEL.setForeground(Color.BLUE);
-
-
-		
-		//panel_one.add(ENTER_START);
-		//adding text area for phone
-		
-		
-		
-		//adding label for 
 		panel_one.add(PREF_CONTACT);
 		//setting the font
 		PREF_CONTACT.setFont(ARIAL);
 		//setting the color
 		PREF_CONTACT.setForeground(Color.BLUE);
-		//adding the ADDRESS LABEL
+		//adding the address textbox
+		panel_one.add(ENTER_EMAIL);
+		//adding the pulldown menu for the contact
+		panel_one.add(CONTACT_PULL);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//adding label for 
+		
 		panel_one.add(ADDRESS_LABEL);
 		//set font
 		ADDRESS_LABEL.setFont(ARIAL);
 		//setting color
 		ADDRESS_LABEL.setForeground(Color.BLUE);
-		//adding the pulldown menu for the contact
-		panel_one.add(CONTACT_PULL);
+		//adding the placeholder
+		panel_one.add(PLACE_HOLDER);
 		//adding text area for address
 		panel_one.add(ENTER_ADD);
+		//adding the placeholder
+		panel_one.add(PLACE_HOLDER2);
 		//notes label
 		//panel_one.add(NOTES_LABEL);
 		//adding font
@@ -262,11 +269,9 @@ public static DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 				String gen = (String) GENDER_CHOICE.getSelectedItem();
 				String date_of_birth = ENTER_DOB.getText();
 				LocalDate dob = LocalDate.parse(date_of_birth, form); //can you alter your input to make it LocalDate? My age verification kind of counts on that
-				
-			
-				//String payment = (String) PAYMENT_PULLDOWN.getSelectedItem();
-				//String memb_length = (String) MEM_LENS.getSelectedItem();
-				//String start_date = ENTER_START.getSelectedText();
+				String payment = (String) PAYMENT_PULLDOWN.getSelectedItem();
+				String memb_length = (String) MEM_LENS.getSelectedItem();
+				String start_date = ENTER_START.getSelectedText();
 				//String customer_notes = NOTES.getText();
 				String address = ENTER_ADD.getText(); 
 				String phone = ENTER_PHONE.getText(); 
