@@ -7,6 +7,7 @@ public class CheckIn {
 //Start with scanner input from user
 //If time permits we’ll advance to a barcode
 //Increment counters
+    //^update: scrapped
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
