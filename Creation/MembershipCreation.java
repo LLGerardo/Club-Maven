@@ -1,88 +1,84 @@
 package Creation;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import GUI.Databaseconnector;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-//Adam
-//Laura
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-//TODO: handle each input from james GUI
-//TODO: making a member of the GUI
 public class MembershipCreation {
-    public void createMember() { //create new member process
-        Scanner scan = new Scanner(System.in); //use scanner to read input
-        System.out.println("Enter your first name: ");// name
-        String firstName=scan.nextLine().toLowerCase(); //store in all lowercase
+    /*This method creates a new member. A new member object is cerated and a member is added to the database  */
+    public void createMember(String firstName, String lastName, String dobInput, String address,
+            String phone, String email, String preferredContactMethod, LocalDate creationdate, String membershipPlan) {
+        try {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+            LocalDate dateOfBirth = LocalDate.parse(dobInput, dateFormatter);
+            LocalDate creationDate = LocalDate.now();
+            String username = generateUniqueUsername(firstName, lastName);
 
-        System.out.println("Enter your last name: "); 
-        String lastName=scan.nextLine().toLowerCase(); 
+            Member member = new Member(firstName, lastName, username, dateOfBirth, address, phone, email,
+                    preferredContactMethod,
+                    creationDate, true, membershipPlan);
 
-        String username=firstName+lastName;//create username 
+            Databaseconnector.insertMember(member);
 
-        System.out.println("Enter your date of birth (yyyy-MM-dd): ");//DOB
-        String dobInput = scan.next();
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); //define expected date format
-        LocalDate dateOfBirth = null;
-        try {      
-            dateOfBirth = LocalDate.parse(dobInput, dateFormatter);//parse the input into a LocalDate object
-            System.out.println("Date of Birth: " + dateOfBirth); //print the parsed date
+            System.out.println("Member created successfully.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error creating member: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Invalid date format. Please enter the date in yyyy-MM-dd format.");
+            e.printStackTrace();
+            System.out.println("An unexpected error occurred during member creation.");
+        }
+    }
+    /*This method generates a username for a club memeber using their first and last name. 
+    Isusername method is called to check if the username already exists in the databse,
+    while it's true, a suffix is added and increments until it is unique */
+    private String generateUniqueUsername(String firstName, String lastName) {
+        String baseUsername = firstName.toLowerCase() + lastName.toLowerCase();
+        String generatedUsername = baseUsername;
+        int suffix = 1;
+        while (isUsernameTaken(generatedUsername)) {
+            generatedUsername = baseUsername + suffix;
+            suffix++;
         }
 
-        System.out.println("Enter your Home Address (1234 Broadway Ave, Chicago,IL 60660)");//Address
-        String address = scan.nextLine();
-        System.out.println("Enter your phone number (xxx-xxx-xxxx): ");//Phone
-        String phone=scan.next();
-        System.out.println("Enter your email (xxxx@zzz.com): ");//email
-        String email = scan.next();
-        isValidEmail(email);//verifyEmail throw exception if not real email
-        System.out.println("Enter your preferred Contact Method? (Email, Phone, Mail, or None): ");//prompt for//Contact Method
-        String preferredContactMethod = scan.nextLine();
-        LocalDate creationDate = LocalDate.now();//creation date
-        System.out.println("Choose a membership plan (6 months, 1 year, or 3 years): "); //membership plan (6 months, 1 year, or 3 year)
-        String membershipPlan = scan.nextLine();
-        LocalDate membershipEndDate = calculateMembershipEndDate(creationDate, membershipPlan); // calculate end date accoridng to chosen membership plan (6 months, 1 year, or 3 year)
-        boolean isActiveMember = true;
-        Member member = new Member(firstName,lastName,dateOfBirth,
-        address, phone, email, preferredContactMethod,
-        creationDate, isActiveMember, membershipPlan);//create member object
-        int membershipId = member.getMembershipId();//membership ID generation
-       
-        System.out.println("Membership ID: " + membershipId); // tell user membershipId number and when this cycle ends
-        System.out.println("Membership will end on: " + membershipEndDate);
-        member.verifyAge();//verifyAge throw exception if under 18 years
-        scan.close(); // close scanner
+        return generatedUsername;
     }
-    
-    public static boolean isValidEmail(String email) throws IllegalArgumentException{ //verify valid email format not necessaril
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";//regular expression for basic email format
-        Pattern pattern = Pattern.compile(emailRegex);// pattern object
-        Matcher matcher = pattern.matcher(email);// matcher object
-        if (matcher.matches()){// if the email matches the pattern
+    /* This method checks if a username is already in the database and returns a boolean.
+        It checks by running a query that selects all members with a given username 
+        and returns the count, if the count si greater than 0, it returns true*/
+    private boolean isUsernameTaken(String username) {
+        try (Connection connection = Databaseconnector.getConnection()) {
+            String query = "SELECT COUNT(*) FROM members WHERE username = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, username);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    resultSet.next();
+                    int count = resultSet.getInt(1);
+
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+    /* This method checks that the email is in the right format and returns an error message if it is'nt */
+    public static boolean isValidEmail(String email) throws IllegalArgumentException {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        if (matcher.matches()) {
             return true;
         } else {
             throw new IllegalArgumentException("Invalid email format: " + email);
-        }
-    }
-
-    private LocalDate calculateMembershipEndDate(LocalDate startDate, String plan) {
-        switch (plan.toLowerCase().trim()) {
-            case "6 months":
-                return startDate.plusMonths(6);
-            case "6":
-                return startDate.plusMonths(6);
-            case "1 year":
-                return startDate.plusYears(1);
-            case "1":
-                return startDate.plusYears(1);
-            case "3 years":
-                return startDate.plusYears(3);
-            case "3":
-                return startDate.plusYears(3);
-            default:
-                throw new IllegalArgumentException("Invalid membership plan: " + plan);
         }
     }
 }

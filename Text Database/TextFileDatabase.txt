@@ -1,23 +1,18 @@
-//tofunmi
-CREATE TABLE club_member (
-    membershipId SERIAL PRIMARY KEY,
-    "First name" VARCHAR(255), -- Note: I added double quotes for column names with spaces
-	"Last name" VARCHAR(255),
-    gender VARCHAR(10),
-    date_of_birth DATE,
-	address VARCHAR(255),
-	Phone VARCHAR(10),
-	email VARCHAR(255) UNIQUE NOT NULL CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$'),
-	preferredContactMethod VARCHAR(255),
-    membership_length VARCHAR(20),
-    start_date DATE,
-	End_date DATE,
-    notes TEXT,
-    
-    -- Calculated column for age
-    age INT GENERATED ALWAYS AS (date_part('year', CURRENT_DATE) - date_part('year', date_of_birth)) STORED,
-    
-    -- Calculated column for length of membership
-    length_of_membership INT GENERATED ALWAYS AS (EXTRACT(MONTH FROM End_date - start_date) + EXTRACT(YEAR FROM End_date - start_date) * 12) STORED
+CREATE SCHEMA syseng;
+
+CREATE TABLE syseng.members (
+    membership_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    date_of_birth DATE NOT NULL,
+    address VARCHAR(255),
+    phone VARCHAR(15),
+    email VARCHAR(255) NOT NULL,
+    preferred_contact_method VARCHAR(20),
+    creation_date DATE NOT NULL,
+    is_active_member BOOLEAN NOT NULL,
+    membership_plan VARCHAR(20),
+    membership_end_date DATE
 );
 

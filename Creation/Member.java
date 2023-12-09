@@ -1,4 +1,5 @@
-package Creation; 
+package Creation;
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -22,12 +23,12 @@ public class Member {
     private LocalDate membershipEndDate;
     private int membershipId;
 
-    public Member(String firstName, String lastName, LocalDate dateOfBirth,
-                  String address, String phone, String email, String preferredContactMethod,
-                  LocalDate creationDate, boolean isActiveMember, String membershipPlan) {
+    public Member(String firstName, String lastName, String username, LocalDate dateOfBirth,
+            String address, String phone, String email, String preferredContactMethod,
+            LocalDate creationDate, boolean isActiveMember, String membershipPlan) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.username = firstName+lastName;
+        this.username = firstName + lastName;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.phone = phone;
@@ -37,7 +38,8 @@ public class Member {
         this.isActiveMember = isActiveMember;
         this.membershipPlan = membershipPlan;
         this.age = calculateAge(dateOfBirth);
-        this.membershipEndDate = calculateMembershipEndDate(creationDate, membershipPlan);
+        // this.membershipEndDate = calculateMembershipEndDate(creationDate,
+        // membershipPlan);
         this.membershipId = nextMembershipId++;
         this.visitCountdown = 30; // Initialize visit countdown (adjust the initial value as needed)
         this.visitCounter = 0;
@@ -45,6 +47,57 @@ public class Member {
     }
 
     // Getter methods for attributes
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getVisitCounter() {
+        return visitCounter;
+    }
+
+    public int getVisitCountdown() {
+        return visitCountdown;
+    }
+
+    public String getPreferredContactMethod() {
+        return preferredContactMethod;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public boolean isActiveMember() {
+        return isActiveMember;
+    }
+
+    public String getMembershipPlan() {
+        return membershipPlan;
+    }
 
     public int getAge() {
         return age;
@@ -72,33 +125,7 @@ public class Member {
         return Period.between(dateOfBirth, currentDate).getYears();
     }
 
-    private LocalDate calculateMembershipEndDate(LocalDate startDate, String plan) { // just imported from memebercreation
-        switch (plan.toLowerCase().trim()) {
-            case "3 months":
-                return startDate.plusMonths(3);
-            case "6 months":
-                return startDate.plusMonths(6);
-            case "6":
-                return startDate.plusMonths(6);
-            case "12 months":
-                return startDate.plusYears(1);
-            case "1 year":
-                return startDate.plusYears(1);
-            case "1":
-                return startDate.plusYears(1);
-            case "24 months":
-                return startDate.plusYears(2);
-            case "36 months":
-                return startDate.plusYears(3);
-            case "3 years":
-                return startDate.plusYears(3);
-            case "3":
-                return startDate.plusYears(3);
-            default:
-                throw new IllegalArgumentException("Invalid membership plan: " + plan);
-        }
-    }
-    void delete() { 
+    void delete() {
         // TODO: Implement this feature
         // marking them as inactive or removing them from a database?
         // set isActiveMember to false or perform any necessary cleanup
@@ -106,7 +133,7 @@ public class Member {
     }
 
     LocalDate start() {
-        // TODO: Implement this feature 
+        // TODO: Implement this feature
         // This method could be used to get the start date of the membership.
         return creationDate;
     }
@@ -115,7 +142,7 @@ public class Member {
         // TODO: Implement this feature
         // This method checks if the membership is currently active.
         LocalDate currentDate = LocalDate.now();
-        if(visitCountdown() && membershipEndDate != currentDate){
+        if (visitCountdown() && membershipEndDate != currentDate) {
             isActiveMember = false;
         }
         return isActiveMember;
@@ -123,14 +150,16 @@ public class Member {
 
     boolean visitCountdown() {
         // TODO: Implement this feature
-        // This method could be used to check if the member's visit countdown has reached <= 0.
-        // You would need to add a variable representing the visit countdown and decrement it accordingly.
+        // This method could be used to check if the member's visit countdown has
+        // reached <= 0.
+        // You would need to add a variable representing the visit countdown and
+        // decrement it accordingly.
         // For example:
         // return visitCountdown <= 0;
         // where visitCountdown is a member variable that you would decrement over time.
         // Make sure to initialize it appropriately when a member is created.
-        int visitCounter= this.visitCounter;
-        if (visitCounter>0) {
+        int visitCounter = this.visitCounter;
+        if (visitCounter > 0) {
             visitCountdown--;
         }
         return visitCountdown <= 0; // TODO: Placeholder, replace with actual implementation
@@ -139,21 +168,21 @@ public class Member {
     int visitStreak() {
         // TODO: Implement this feature
         // This method could be used to get the all-time visit streak of the member.
-        // You would need to add a variable representing the visit streak and update it based on the member's activity.
+        // You would need to add a variable representing the visit streak and update it
+        // based on the member's activity.
         // For example:
         // return visitStreak;
-        // where visitStreak is a member variable that you would update based on the member's visits.
+        // where visitStreak is a member variable that you would update based on the
+        // member's visits.
 
         return visitCounter; // Placeholder, replace with actual implementation
     }
 
-    void recordVisit()  { //should be used in checkin 
+    void recordVisit() { // should be used in checkin
         visitCounter++;
 
         visitCountdown = 30;
     }
-
-    
 
     @Override
     public String toString() {
