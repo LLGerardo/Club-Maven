@@ -2,9 +2,9 @@ package GUI;
 import Creation.Member;
 import Creation.MembershipCreation;
 import java.time.LocalDate;
-import java.time.Period;
+//import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
+//import java.time.format.DateTimeFormatterBuilder;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
 
 
 /*This class creates a GUI in order to register a new club member. This class will require
- * several libraries from the swing library. 
+ * several libraries from the swing and awt libraries. 
  * intended for use by the club staff The constants are the width
  * and height of the GUI, the Labels, Text areas, and Buttons */
 
@@ -49,7 +49,7 @@ public class GUIPanel {
 	//Label for the customer's date of birth
 	private static final JLabel DATE_OF_BIRTH = new JLabel("Customer's Date of Birth: ");
 	//text field for date of birth
-	private static final JTextArea ENTER_DOB = new JTextArea("mm-dd-yyyy");
+	private static final JTextArea ENTER_DOB = new JTextArea("yyyy-MM-dd");
 	//label for the for the membership length
 	private static final JLabel MEM_LENGTH = new JLabel("Enter Memberhsip Length: ");
 	//creating the string array for the gym memberships
@@ -83,7 +83,7 @@ public class GUIPanel {
 	//membership start date Label
 	private static final JLabel START_DATE = new JLabel("Membership Start Date: ");
 	//membership start date text
-	private static final JTextArea ENTER_START = new JTextArea("mm-dd-yyyy");
+	private static final JTextArea ENTER_START = new JTextArea("yyyy-MM-dd");
 	//Label for additional notes
 	private static final JLabel NOTES_LABEL = new JLabel("Additional Notes on Customers: ");
 	//text area for notes
@@ -97,6 +97,11 @@ public class GUIPanel {
 		
 
 	//("MM-dd-yyyy");
+//DateTimeFormatter form = df.toFormatter();
+public static DateTimeFormatter form = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+
+
 	
 	
 /*METHOD: creates a GUI panel for user input. The method requires the instantiation of 
@@ -104,15 +109,12 @@ public class GUIPanel {
  *The instance of the panel, which sets the outlay of the labels and text areas
 * @PARAM: None*/
 	
-	
-	
 	public static void createGUI() {
 		//This is the date time format
 		//DateTimeFormatterBuilder df = new DateTimeFormatterBuilder();
 		//df.appendPattern("MM-dd-yyyy");
 		//df.appendLiteral(' ');
-		//DateTimeFormatter form = df.toFormatter();
-		DateTimeFormatter form = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+		
 		
 		JFrame frame = new JFrame("Club Maven GUI");
 		//setting the size of JFrame
@@ -260,13 +262,16 @@ public class GUIPanel {
 				String gen = (String) GENDER_CHOICE.getSelectedItem();
 				String date_of_birth = ENTER_DOB.getText();
 				LocalDate dob = LocalDate.parse(date_of_birth, form); //can you alter your input to make it LocalDate? My age verification kind of counts on that
-				String payment = (String) PAYMENT_PULLDOWN.getSelectedItem();
-				String memb_length = (String) MEM_LENS.getSelectedItem();
-				String start_date = ENTER_START.getSelectedText();
-				String customer_notes = NOTES.getText();
+				
+			
+				//String payment = (String) PAYMENT_PULLDOWN.getSelectedItem();
+				//String memb_length = (String) MEM_LENS.getSelectedItem();
+				//String start_date = ENTER_START.getSelectedText();
+				//String customer_notes = NOTES.getText();
 				String address = ENTER_ADD.getText(); 
 				String phone = ENTER_PHONE.getText(); 
-				String email = ENTER_EMAIL.getText(); 
+				String email = ENTER_EMAIL.getText();
+				 MembershipCreation.isValidEmail(email);
 				String prefcontact = (String)CONTACT_PULL.getSelectedItem(); 
 				LocalDate creationDate = LocalDate.now(); 
 				String membershipPlan = (String)MEM_LENS.getSelectedItem(); 

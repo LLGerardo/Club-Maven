@@ -80,12 +80,16 @@ public class Member {
                 return startDate.plusMonths(6);
             case "6":
                 return startDate.plusMonths(6);
+            case "12 months":
+                return startDate.plusYears(1);
             case "1 year":
                 return startDate.plusYears(1);
             case "1":
                 return startDate.plusYears(1);
             case "24 months":
                 return startDate.plusYears(2);
+            case "36 months":
+                return startDate.plusYears(3);
             case "3 years":
                 return startDate.plusYears(3);
             case "3":
