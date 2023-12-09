@@ -1,3 +1,5 @@
+//Sumayli
+
 package Cancellation;
 //import java.util.Scanner;
 import Creation.Member;
@@ -7,7 +9,6 @@ import GUI.DatabaseConnector;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-//Arub
 public class Membercancellation {
     public void cancelMembership(Member member){
         if(member.isActiveMember(){
