@@ -3,6 +3,9 @@ import java.util.Scanner;
 import GUI.DatabaseConnector; // added this to utilize the database i think (laura)
 //Ceddy
 //
+//Adam
+
+//i asked adam to take a look - ced
 public class CheckIn {
 //Start with scanner input from user
 //If time permits we’ll advance to a barcode
@@ -34,6 +37,8 @@ public class CheckIn {
         //ok nvm.
         //check if membership id exists in database
         //i'll need to take a look at the database to do this i think -ced
+//ok, i got the confirmation from partner that i'd have to do this too. - ced
+        
         String[] validIDs = //valid ids;
         for (String ID : validIDs) {
             if (ID.equals(memberID)) {
