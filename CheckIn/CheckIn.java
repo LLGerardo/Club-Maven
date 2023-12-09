@@ -44,15 +44,18 @@ public class CheckIn {
         //i'll need to take a look at the database to do this i think -ced
 //ok, i got the confirmation from partner that i'd have to do this too. - ced
         
-        String[] validIDs = //valid ids;
-        for (String ID : validIDs) {
-            if (ID.equals(memberID)) {
-                return true;
+        try (Connection connection = DatabaseConnector.getConnection()) {
+            String sql = "SELECT membership_id FROM syseng.members WHERE membership_id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, Integer.parseInt(memberID));
+                ResultSet resultSet.next();
             }
-        }
-        return false;//set to false just so we can build and run (laura) //TODO:finish this
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;//set to false just so we can build and run (laura) //TODO:finish this
         //ok i tried just now -ced
         //looks good maybe talk to tofumni about how to connect the database to this (laura)
+        }
     }
 
 // method to send user to membership portal
