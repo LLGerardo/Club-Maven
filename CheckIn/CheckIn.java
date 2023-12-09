@@ -1,6 +1,11 @@
 package CheckIn;
 import java.util.Scanner;
 import GUI.DatabaseConnector; // added this to utilize the database i think (laura)
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 //Ceddy
 //
 //Adam
