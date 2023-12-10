@@ -71,4 +71,5 @@ public class Databaseconnector {
         // Implementing logic to parse the membership plan string and return the duration as an integer
         return Integer.parseInt(membershipPlan.replaceAll("\\D+", ""));
     }
+    
 }
