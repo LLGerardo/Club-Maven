@@ -49,6 +49,7 @@ public class CheckIn {
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, Integer.parseInt(memberID));
                 ResultSet resultSet.next();
+                return resultSet.next();
             }
         } catch (SQLException e) {
             e.printStackTrace();
