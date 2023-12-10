@@ -1,0 +1,20 @@
+package MembershipPortal;
+
+
+
+/*This GUI will create a panel will show a bar code
+ * This will be 
+ */
+
+
+ public class CM_Panel {
+
+    
+
+    public static void createCM(){
+
+        
+
+    }
+
+}
