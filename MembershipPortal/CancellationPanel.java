@@ -1,6 +1,8 @@
-*This GUI will create a cancellation
- * This will be 
- */
+
+
+package MembershipPortal;
+
+
 
 
  public class CancellationPanel {
