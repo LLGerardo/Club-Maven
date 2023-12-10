@@ -1,6 +1,6 @@
 package CheckIn;
 import java.util.Scanner;
-import GUI.DatabaseConnector; // added this to utilize the database i think (laura)
+import GUI.Databaseconnector; // added this to utilize the database i think (laura)
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,7 +44,7 @@ public class CheckIn {
         //i'll need to take a look at the database to do this i think -ced
 //ok, i got the confirmation from partner that i'd have to do this too. - ced
         
-        try (Connection connection = DatabaseConnector.getConnection()) {
+        try (Connection connection = Databaseconnector.getConnection()) {
             String sql = "SELECT membership_id FROM syseng.members WHERE membership_id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, Integer.parseInt(memberID));

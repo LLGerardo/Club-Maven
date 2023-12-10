@@ -5,13 +5,13 @@ package Cancellation;
 import Creation.Member;
 import Creation.MembershipCreation;
 import GUI.GUIPanel;
-import GUI.DatabaseConnector;
+import GUI.Databaseconnector;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Membercancellation {
     public void cancelMembership(Member member){
-        if(member.isActiveMember(){
+        if(member.isActiveMember()){
             member.setActiveMember(false);
             System.out.println("the membership with this ID:" +  member.getMembershipId() + "has been canceled");
         }else{
