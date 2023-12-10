@@ -1,6 +1,8 @@
 package MembershipPortal;
 
 import Creation.Member;
+import GUI.Databaseconnector;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,8 +11,13 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
+
+import Cancellation.Membercancellation;
 
 /* This class is designed to take create a GUI that will take in member requests to request check-in,
  * change their data, to change the length of their memberships, and to cancel their memberships.
@@ -142,6 +149,16 @@ private static final JButton CANCEL_BUTTON = new JButton("Cancel");
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
                 //throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+                int memberIdToCancel = getMemberIdFromUserInput();
+
+                // Calling the cancelMembership method
+                try {
+                    Connection connection = Databaseconnector.getConnection();
+                    Membercancellation.cancelMembership(connection, memberIdToCancel);
+                    System.out.println("Membership cancelled successfully for member with ID " + memberIdToCancel);
+                } catch (SQLException ex) {
+                    System.out.println("Error cancelling membership: " + ex.getMessage());
+                }
             }});
         //adding bigger panel
         JPanel big_panel = new JPanel();
@@ -153,6 +170,15 @@ private static final JButton CANCEL_BUTTON = new JButton("Cancel");
         frame.add(big_panel);
 
 
+    }
+    private static int getMemberIdFromUserInput() {
+        // obtaining membership ID from the JTextArea (MEM_ID_TEXT).
+        try {
+            return Integer.parseInt(MEM_ID_TEXT.getText());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid member ID format. Please enter a valid integer ID.");
+            return -1; // Returning a default or error value
+        }
     }
     
         public static void main(String[] args) {

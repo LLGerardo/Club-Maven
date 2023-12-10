@@ -51,7 +51,7 @@ public class MembershipCreation {
     }
     /* This method checks if a username is already in the database and returns a boolean.
         It checks by running a query that selects all members with a given username 
-        and returns the count, if the count si greater than 0, it returns true*/
+        and returns the count, if the count is greater than 0, it returns true*/
     private boolean isUsernameTaken(String username) {
         try (Connection connection = Databaseconnector.getConnection()) {
             String query = "SELECT COUNT(*) FROM members WHERE username = ?";
