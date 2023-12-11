@@ -1,5 +1,15 @@
 {
     "java.project.referencedLibraries": [
-        "lib/*.jar"
-    ]
+        "lib/*.jar",
+        "test-lib\\**\\*.jar"
+    ], 
+    
+    "java.classPath": ["lib/*"]
+
+    
 }
+
+    
+
+
+
